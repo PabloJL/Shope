@@ -7,20 +7,23 @@ import NotFound from "../NotFound";
 import SignIn from "../SignIn";
 import NavBar from "../../Components/Navbar";
 import "./App.css";
+import CartProvider from "../../Context";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/my-account" element={<Account />} />
-        <Route path="/my-order" element={<MyOrder />} />
-        <Route path="/my-orders" element={<MyOrders />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <NavBar />
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/my-account" element={<Account />} />
+          <Route path="/my-order" element={<MyOrder />} />
+          <Route path="/my-orders" element={<MyOrders />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <NavBar />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 
