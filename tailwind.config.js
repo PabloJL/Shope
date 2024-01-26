@@ -5,6 +5,7 @@ export default {
     extend: {},
     colors: {
       bk: "#F8FAE5",
+      ac: "#8ADAB2",
     },
   },
   plugins: [],

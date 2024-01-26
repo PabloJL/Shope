@@ -7,7 +7,7 @@ import NotFound from "../NotFound";
 import SignIn from "../SignIn";
 import NavBar from "../../Components/Navbar";
 import "./App.css";
-import CartProvider from "../../Context";
+import { CartProvider } from "../../Context";
 
 function App() {
   return (

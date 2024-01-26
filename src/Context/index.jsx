@@ -1,9 +1,13 @@
 import { createContext } from "react";
+import { useState } from "react";
 
-const CartContext = createContext();
+export const CartContext = createContext();
 
-const CartProvider = ({ children }) => {
-  return <CartContext.Provider>{children}</CartContext.Provider>;
+export const CartProvider = ({ children }) => {
+  const [count, setCount] = useState(0);
+  return (
+    <CartContext.Provider value={{ count, setCount }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
-
-export default CartProvider;

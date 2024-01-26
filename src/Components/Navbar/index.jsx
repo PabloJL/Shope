@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../../Context";
+import { useContext } from "react";
+import { LuShoppingCart } from "react-icons/lu";
 
 const NavBar = () => {
   const activeStyle = "underline underline-offset-4";
-
+  const { count } = useContext(CartContext);
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 font-light text-sm">
       <ul className="flex items-center gap-3">
@@ -84,7 +87,10 @@ const NavBar = () => {
             Sign In
           </NavLink>
         </li>
-        <li>🛒0</li>
+        <li>
+          <LuShoppingCart />
+        </li>
+        <li>{count}</li>
       </ul>
     </nav>
   );

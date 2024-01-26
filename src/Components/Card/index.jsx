@@ -1,7 +1,17 @@
 // import React from 'react'
+import { useContext, useState } from "react";
 import { IoMdAdd } from "react-icons/io";
+import { CartContext } from "../../Context";
 
 function Card(data) {
+  const { count, setCount } = useContext(CartContext);
+  const [active, setActive] = useState(false);
+
+  const addToCart = () => {
+    setCount(count + 1);
+    setActive(!active);
+  };
+
   return (
     <div className="cursor-pointer w-56 rounded-md  bg-bk drop-shadow-xl h-80">
       <figure className="relative mb-2 w-full h-3/5">
@@ -15,7 +25,12 @@ function Card(data) {
           // eslint-disable-next-line react/no-unknown-property
           referrerPolicy="no-referrer"
         />
-        <button className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full m-2 p-0.5 bg-bk">
+        <button
+          onClick={addToCart}
+          className={`absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full m-2 p-0.5 ${
+            active ? " bg-ac" : " bg-bk"
+          }`}
+        >
           <IoMdAdd />
         </button>
       </figure>
