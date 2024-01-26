@@ -13,7 +13,7 @@ function Card(data) {
   };
 
   return (
-    <div className="cursor-pointer w-56 rounded-md  bg-bk drop-shadow-xl h-80">
+    <div className="cursor-pointer w-56 rounded-md  bg-bk  h-80">
       <figure className="relative mb-2 w-full h-3/5">
         <span className="absolute bottom-0 left-0 rounded-lg text-black text-xs px-3 py-0.5 m-2 bg-bk/60">
           {data.data.category.name}

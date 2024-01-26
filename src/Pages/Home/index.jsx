@@ -3,6 +3,7 @@ import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 import { useState, useEffect } from "react";
 import { apiUrl } from "../../Api";
+import ProductDetail from "../../Components/ProductDetail";
 
 function Home() {
   const [items, setItems] = useState(null);
@@ -28,6 +29,7 @@ function Home() {
           <Card key={item.id} data={item} />
         ))}
       </section>
+      <ProductDetail />
     </Layout>
   );
 }
