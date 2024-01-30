@@ -1,16 +1,16 @@
 // import React from 'react'
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { IoMdAdd } from "react-icons/io";
+import { IoIosCheckmark } from "react-icons/io";
+
 import { CartContext } from "../../Context";
 
 function Card(data) {
   const { count, setCount } = useContext(CartContext);
-  const [active, setActive] = useState(false);
   const contextS = useContext(CartContext);
 
   const addToCart = (product) => {
     setCount(count + 1);
-    setActive(!active);
 
     contextS.setCart([...contextS.cart, product]);
     contextS.openCheckOut();
@@ -19,6 +19,36 @@ function Card(data) {
   const showProduct = (product) => {
     contextS.openProductDetail();
     contextS.setProduct(product);
+  };
+
+  const renderIcon = (id) => {
+    const isInCart =
+      contextS.cart.filter((product) => product.id === id).length > 0;
+
+    if (isInCart) {
+      return (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full m-2 p-0.5 bg-ac text-2xl"
+        >
+          <IoIosCheckmark className=" " />
+        </button>
+      );
+    } else {
+      return (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCart(data.data);
+          }}
+          className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full m-2 p-0.5 bg-bk "
+        >
+          <IoMdAdd />
+        </button>
+      );
+    }
   };
 
   return (
@@ -37,17 +67,7 @@ function Card(data) {
           // eslint-disable-next-line react/no-unknown-property
           referrerPolicy="no-referrer"
         />
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            addToCart(data.data);
-          }}
-          className={`absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full m-2 p-0.5 ${
-            active ? " bg-ac" : " bg-bk"
-          }`}
-        >
-          <IoMdAdd />
-        </button>
+        {renderIcon(data.data.id)}
       </figure>
       <div className="flex flex-col p-5 mt-0  h-2/5 justify-between">
         <p className="text-sm font-normal">{data.data.title}</p>

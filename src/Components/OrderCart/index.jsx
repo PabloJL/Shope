@@ -1,7 +1,7 @@
 import { IoClose } from "react-icons/io5";
 
 function OrderCart(props) {
-  const { title, img, price } = props;
+  const { id, title, img, price, deleteItem } = props;
 
   return (
     <div className="flex justify-between items-center mb-4">
@@ -21,7 +21,10 @@ function OrderCart(props) {
       </div>
       <section className="flex items-center gap-2">
         <p className=" text-lg font-medium">${price} </p>
-        <button className=" h-6 w-6 text-black cursor-pointer">
+        <button
+          onClick={() => deleteItem(id)}
+          className=" h-6 w-6 text-black cursor-pointer text-xl"
+        >
           <IoClose />
         </button>
       </section>
