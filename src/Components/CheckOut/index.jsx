@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { IoMdCloseCircle } from "react-icons/io";
 import { CartContext } from "../../Context";
 import "./styles.css";
@@ -7,6 +8,7 @@ import { totalPrice } from "../../Utils";
 
 function CheckOut() {
   const context = useContext(CartContext);
+  const total = totalPrice(context.cart);
 
   const closeSide = () => {
     context.closeCheckOut();
@@ -17,6 +19,19 @@ function CheckOut() {
     const filteredProducts = context.cart.filter((product) => product.id != id);
     context.setCart(filteredProducts);
     context.setCount(context.count - 1);
+  };
+
+  const handleCheckOut = () => {
+    const order2Add = {
+      date: "01-30-24",
+      products: context.cart,
+      totalProducts: context.cart.length,
+      totalPrice: total,
+    };
+
+    context.setOrder([...context.order, order2Add]);
+    context.setCart([]);
+    closeSide();
   };
 
   return (
@@ -31,7 +46,7 @@ function CheckOut() {
           <IoMdCloseCircle />
         </button>
       </section>
-      <div className="px-4">
+      <div className="px-4  flex-1">
         {context.cart.map((product) => (
           <OrderCart
             key={product.id}
@@ -43,11 +58,19 @@ function CheckOut() {
           />
         ))}
       </div>
-      <section className="p-6">
+      <section className="p-4 flex flex-col gap-3">
         <div className="flex justify-between items-center">
           <p className=" font-light">Total:</p>
-          <p className=" font-medium text-lg">${totalPrice(context.cart)} </p>
+          <p className=" font-medium text-lg">${total} </p>
         </div>
+        <Link to="/my-orders/last">
+          <button
+            className="w-full bg-black py-3 text-white rounded-lg   "
+            onClick={() => handleCheckOut()}
+          >
+            CheckOut
+          </button>
+        </Link>
       </section>
     </aside>
   );

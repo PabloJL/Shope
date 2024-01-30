@@ -2,10 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
-    colors: {
-      bk: "#F8FAE5",
-      ac: "#8ADAB2",
+    extend: {
+      colors: {
+        bk: "#F8FAE5",
+        ac: "#8ADAB2",
+      },
     },
   },
   plugins: [],

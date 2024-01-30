@@ -90,7 +90,7 @@ const NavBar = () => {
         <li>
           <LuShoppingCart />
         </li>
-        <li>{context.count}</li>
+        <li>{context.cart.length}</li>
       </ul>
     </nav>
   );

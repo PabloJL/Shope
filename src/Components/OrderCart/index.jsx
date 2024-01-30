@@ -19,14 +19,17 @@ function OrderCart(props) {
           </p>
         </div>
       </div>
+
       <section className="flex items-center gap-2">
         <p className=" text-lg font-medium">${price} </p>
-        <button
-          onClick={() => deleteItem(id)}
-          className=" h-6 w-6 text-black cursor-pointer text-xl"
-        >
-          <IoClose />
-        </button>
+        {deleteItem && (
+          <button
+            onClick={() => deleteItem(id)}
+            className=" h-6 w-6 text-black cursor-pointer text-xl"
+          >
+            <IoClose />
+          </button>
+        )}
       </section>
     </div>
   );
