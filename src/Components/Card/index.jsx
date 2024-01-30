@@ -13,6 +13,7 @@ function Card(data) {
     setActive(!active);
 
     contextS.setCart([...contextS.cart, product]);
+    contextS.openCheckOut();
   };
 
   const showProduct = (product) => {

@@ -6,6 +6,7 @@ import MyOrders from "../MyOrders";
 import NotFound from "../NotFound";
 import SignIn from "../SignIn";
 import NavBar from "../../Components/Navbar";
+import CheckOut from "../../Components/CheckOut";
 import "./App.css";
 import { CartProvider } from "../../Context";
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <NavBar />
+        <CheckOut />
       </BrowserRouter>
     </CartProvider>
   );
