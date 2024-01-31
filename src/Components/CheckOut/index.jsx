@@ -4,7 +4,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { CartContext } from "../../Context";
 import "./styles.css";
 import OrderCart from "../OrderCart";
-import { totalPrice } from "../../Utils";
+import { totalPrice, dateTime } from "../../Utils";
 
 function CheckOut() {
   const context = useContext(CartContext);
@@ -23,7 +23,7 @@ function CheckOut() {
 
   const handleCheckOut = () => {
     const order2Add = {
-      date: "01-30-24",
+      date: { dateTime },
       products: context.cart,
       totalProducts: context.cart.length,
       totalPrice: total,
