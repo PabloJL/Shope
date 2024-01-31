@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../Context";
 import { useContext } from "react";
-import { LuShoppingCart } from "react-icons/lu";
+import { IoCartOutline } from "react-icons/io5";
 
 const NavBar = () => {
   const activeStyle = "underline underline-offset-4";
@@ -88,7 +88,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <LuShoppingCart />
+          <IoCartOutline />
         </li>
         <li>{context.cart.length}</li>
       </ul>

@@ -10,7 +10,9 @@ function MyOrders() {
   const context = useContext(CartContext);
   return (
     <Layout>
-      My Orders
+      <div className="mb-6">
+        <h1>My Orders</h1>
+      </div>
       {context.order.map((order, index) => (
         <Link key={index} to={`/my-orders/${index}`}>
           <OrdersCard
