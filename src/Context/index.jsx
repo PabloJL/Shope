@@ -27,6 +27,7 @@ export const CartProvider = ({ children }) => {
 
   // Get products by title
   const [search, setSearch] = useState(null);
+  const [filteredItems, setFilteredItems] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +41,18 @@ export const CartProvider = ({ children }) => {
     };
     fetchData();
   }, []);
+
+  const itemSearch = (items, search) => {
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    );
+  };
+
+  useEffect(() => {
+    if (search) {
+      setFilteredItems(itemSearch(items, search));
+    }
+  }, [items, search]);
 
   return (
     <CartContext.Provider
@@ -62,6 +75,7 @@ export const CartProvider = ({ children }) => {
         setItems,
         search,
         setSearch,
+        filteredItems,
       }}
     >
       {children}

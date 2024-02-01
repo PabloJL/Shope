@@ -4,7 +4,7 @@ function OrderCart(props) {
   const { id, title, img, price, deleteItem } = props;
 
   return (
-    <div className="flex justify-between items-center mb-4">
+    <div className="flex justify-between items-center mb-4 w-80">
       <div className="flex items-center gap-2">
         <figure className=" w-20 h-20 flex-shrink-0">
           <img
@@ -14,7 +14,7 @@ function OrderCart(props) {
           ></img>
         </figure>
         <div className="flex flex-col">
-          <p className="text-sm font-light overflow-hidden overflow-ellipsis p-2">
+          <p className="text-md font-light overflow-hidden overflow-ellipsis p-2">
             {title}
           </p>
         </div>

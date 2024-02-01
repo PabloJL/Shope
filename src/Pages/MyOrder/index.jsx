@@ -15,29 +15,31 @@ function MyOrder() {
 
   return (
     <Layout>
-      <div className="flex items-center justify-center relative w-80 mb-6">
-        <Link to="/my-orders" className="absolute left-0">
-          <button className=" h-6 w-6 text-black ">
-            <IoIosArrowBack />
-          </button>
-        </Link>
-        <h1> My Order </h1>
-      </div>
+      <div className=" bg-bk p-4 drop-shadow-sm rounded-md  justify-center items-center">
+        <div className="flex items-center justify-center relative  mb-6 ">
+          <Link to="/my-orders" className="absolute left-0">
+            <button className=" text-xl text-black ">
+              <IoIosArrowBack />
+            </button>
+          </Link>
+          <h1 className=" font-semibold text-xl"> My Order </h1>
+        </div>
 
-      <div className="flex flex-col w-80">
-        {context.order?.[index]?.products.map((product) => (
-          <OrderCart
-            key={product.id}
-            id={product.id}
-            title={product.title}
-            img={product.images?.[0]}
-            price={product.price}
-          />
-        ))}
-      </div>
-      <div className="flex justify-between items-center w-80 mt-4">
-        <p className=" font-light">Total:</p>
-        <p className=" font-medium text-lg">${total} </p>
+        <div className="flex flex-col w-80">
+          {context.order?.[index]?.products.map((product) => (
+            <OrderCart
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              img={product.images?.[0]}
+              price={product.price}
+            />
+          ))}
+        </div>
+        <div className="flex justify-between items-center w-80 mt-4">
+          <p className=" font-normal text-lg">Total:</p>
+          <p className=" font-medium text-lg">${total} </p>
+        </div>
       </div>
     </Layout>
   );
