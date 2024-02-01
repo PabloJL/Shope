@@ -6,6 +6,10 @@ import { IoCartOutline } from "react-icons/io5";
 const NavBar = () => {
   const activeStyle = "underline underline-offset-4";
   const context = useContext(CartContext);
+  const openCart = () => {
+    context.openCheckOut();
+  };
+
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 font-light text-sm bg-bk">
       <ul className="flex items-center gap-3">
@@ -88,7 +92,10 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <IoCartOutline />
+          <IoCartOutline
+            className=" text-xl cursor-pointer"
+            onClick={() => openCart()}
+          />
         </li>
         <li>{context.cart.length}</li>
       </ul>
