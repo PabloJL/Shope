@@ -8,14 +8,12 @@ import { IoSearch } from "react-icons/io5";
 
 function Home() {
   const context = useContext(CartContext);
-  const items = context.items;
 
   const renderView = () => {
-    const itemsToRender =
-      context.search?.length > 0 ? context.filteredItems : items;
+    const itemsToRender = context.filteredItems;
 
     if (itemsToRender?.length > 0) {
-      return itemsToRender.map((item) => <Card key={item.id} data={item} />);
+      return itemsToRender?.map((item) => <Card key={item.id} data={item} />);
     } else {
       return <p>Product not Found</p>;
     }

@@ -28,7 +28,7 @@ function CheckOut() {
       totalProducts: context.cart.length,
       totalPrice: total,
     };
-
+    context.setSearch(null);
     context.setOrder([...context.order, order2Add]);
     context.setCart([]);
     closeSide();

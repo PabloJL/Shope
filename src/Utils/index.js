@@ -7,7 +7,7 @@ export const totalPrice = (products) => {
 export const dateTime = () => {
   var today = new Date();
   var date =
-    today.getDate() + "-" + today.getMonth() + 1 + "-" + today.getFullYear();
+    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
   // today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
   return date;

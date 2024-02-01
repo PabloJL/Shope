@@ -29,6 +29,9 @@ export const CartProvider = ({ children }) => {
   const [search, setSearch] = useState(null);
   const [filteredItems, setFilteredItems] = useState(null);
 
+  //Get products by category
+  const [category, setCategory] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,11 +51,39 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  useEffect(() => {
-    if (search) {
-      setFilteredItems(itemSearch(items, search));
+  const filterBy = (searchType, items, search, category) => {
+    if (searchType === "title") {
+      return itemSearch(items, search);
     }
-  }, [items, search]);
+
+    if (searchType === "category") {
+      return categorySearch(items, category);
+    }
+    if (searchType === "title&category") {
+      return categorySearch(items, category).filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    if (!searchType) {
+      return items;
+    }
+  };
+
+  useEffect(() => {
+    if (search && !category)
+      setFilteredItems(filterBy("title", items, search, category));
+    if (category && !search)
+      setFilteredItems(filterBy("category", items, search, category));
+    if (category && search)
+      setFilteredItems(filterBy("title&category", items, search, category));
+    if (!category && !search) setFilteredItems(filterBy(null, items, search));
+  }, [items, search, category]);
+
+  const categorySearch = (items, category) => {
+    return items?.filter((item) =>
+      item.category.name.toLowerCase().includes(category)
+    );
+  };
 
   return (
     <CartContext.Provider
@@ -76,6 +107,7 @@ export const CartProvider = ({ children }) => {
         search,
         setSearch,
         filteredItems,
+        setCategory,
       }}
     >
       {children}
